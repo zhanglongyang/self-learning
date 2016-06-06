@@ -1,3 +1,8 @@
+var argv = require('yargs')
+    .usage('Usage: node $0 --l[num] --b[num]')
+    .demand(['l', 'b'])
+    .argv
+
 var rect = require('./rectangle')
 
 function solveRect(l, b) {
@@ -16,6 +21,8 @@ solveRect(2, 4)
 solveRect(3, 5)
 solveRect(-3, 5)
 
+solveRect(argv.l, argv.b)
+
 function solveRectWithCallback(l, b) {
     console.log('resolving for rectangle width l = ' + l + ' and b = ' + b)
 
@@ -32,3 +39,5 @@ function solveRectWithCallback(l, b) {
 solveRectWithCallback(2, 4)
 solveRectWithCallback(3, 5)
 solveRectWithCallback(-3, 5)
+
+solveRectWithCallback(argv.l, argv.b)
