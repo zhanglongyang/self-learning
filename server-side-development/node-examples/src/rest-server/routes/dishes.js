@@ -7,23 +7,51 @@ var router = express.Router()
 router.use(bodyParser.json())
 router.route('/:dishId')
     .get(function(req, res, next) {
-        Dishes.find({}, function(err, dishes) {
+        Dishes.findById(req.params.dishId, function(err, dish) {
             if (err) { throw err }
+
+            res.json(dish)
         })
-        res.end('All dishes: ' + dishes)
     })
     .put(function(req, res, next) {
-        Dishes.create(req.body, function(err, dish) {
+        Dishes.findByIdAndUpdate(req.params.dishId, {
+            $set: req.body
+        }, {
+            new: true
+        }, function(err, dish) {
             if (err) { throw err }
 
-            console.log('Dish created!')
-            res.writeHead(200, { 'Content-Type': 'text/plain' })
-
-            res.end('Added the dish with id: ' + dish._id)
+            res.json(dish)
         })
     })
     .delete(function(req, res, next) {
-        res.end('Deleting dish: ' + req.params.dishId)
+        Dishes.findByIdAndRemove(req.params.dishId, function(err, result) {
+            if (err) { throw err }
+
+            res.json(result)
+        })
+    })
+
+router.route('/:dishId/comments')
+    .get(function(req, res, next) {
+        Dishes.findById(req.params.dishId, function(err, dish) {
+            if (err) { throw err }
+
+            res.json(dish.comments)
+        })
+    })
+    .post(function(req, res, next) {
+        Dishes.findById(req.params.dishId, function(err, dish) {
+            if (err) { throw err }
+
+            dish.comments.push(req.body)
+
+            dish.save(function(err, dish) {
+                if (err) { throw err }
+
+                res.json(dish)
+            })
+        })
     })
 
 module.exports = router

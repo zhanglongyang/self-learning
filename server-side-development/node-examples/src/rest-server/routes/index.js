@@ -14,13 +14,21 @@ router.route('/')
         })
     })
     .post(function(req, res, next) {
-        res.end('post dish')
+        Dishes.create(req.body, function(err, dish) {
+            if (err) { throw err }
+
+            console.log('Dish created!')
+            res.writeHead(200, { 'Content-Type': 'text/plain' })
+
+            res.end('Added the dish with id: ' + dish._id)
+        })
     })
     .delete(function(req, res, next) {
-        res.end('delete dish')
-    })
-    .put(function(req, res, next) {
-        res.end('put dish')
+        Dishes.delete({}, function(err, result) {
+            if (err) { throw err }
+
+            res.json(result)
+        })
     })
 
 module.exports = router
