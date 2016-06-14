@@ -1,9 +1,26 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var bodyParser = require('body-parser')
+var Dishes = require('../models/dishes')
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+var router = express.Router()
 
-module.exports = router;
+router.use(bodyParser.json())
+router.route('/')
+    .get(function(req, res, next) {
+        Dishes.find({}, function(err, dishes) {
+            if (err) { throw err }
+
+            res.json(dishes)
+        })
+    })
+    .post(function(req, res, next) {
+        res.end('post dish')
+    })
+    .delete(function(req, res, next) {
+        res.end('delete dish')
+    })
+    .put(function(req, res, next) {
+        res.end('put dish')
+    })
+
+module.exports = router
