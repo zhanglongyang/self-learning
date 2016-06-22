@@ -7,3 +7,9 @@
 - Assets = Other's claims + my claims
 - Assets = Liability + my claims
 - Assets = Liability + Equity
+
+## Let's buy a car
+![](./img/buy-car.png)
+
+## Some practice entries
+![](./img/practice-entries.png)
