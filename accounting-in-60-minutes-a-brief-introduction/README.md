@@ -13,3 +13,9 @@
 
 ## Some practice entries
 ![](./img/practice-entries.png)
+
+## Debits = Credits
+![](./img/debits-credits.png)
+
+## The Trial Balance
+![](./img/trial-balance.png)
