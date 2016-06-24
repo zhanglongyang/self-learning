@@ -19,3 +19,6 @@
 
 ## The Trial Balance
 ![](./img/trial-balance.png)
+
+## The Balance Sheet
+![](./img/balance-sheet.png)
