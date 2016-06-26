@@ -22,3 +22,12 @@
 
 ## The Balance Sheet
 ![](./img/balance-sheet.png)
+
+## Income Accounts
+![](./img/income-accounts.png)
+
+## Net Income
+![](./img/net-income.png)
+
+## The Income Statement
+![](./img/income-statement.png)
