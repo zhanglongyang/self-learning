@@ -31,3 +31,15 @@
 
 ## The Income Statement
 ![](./img/income-statement.png)
+
+## It's all about timing
+![](./img/all-about-timing.png)
+
+## Income does not equal cash
+![](./img/income-does-not-equal-cash.png)
+
+## Expense and timing
+![](./img/expense-and-timing.png)
+
+## Conclusion
+![](./img/conclusion.png)
