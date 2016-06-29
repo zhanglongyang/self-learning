@@ -1,1 +1,1 @@
-# coursera-exercises
+# online-courses
