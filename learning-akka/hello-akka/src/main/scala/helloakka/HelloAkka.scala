@@ -1,3 +1,5 @@
+package helloakka
+
 import akka.actor.{Actor, ActorSystem, Props}
 
 // Actor message
