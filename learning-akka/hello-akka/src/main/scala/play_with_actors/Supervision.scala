@@ -14,23 +14,33 @@ import scala.language.postfixOps
 case class User(name: String, email: String)
 
 object Recorder {
+
   sealed trait RecorderMsg
 
   case class NewUser(user: User) extends RecorderMsg
+
 }
 
 object Checker {
+
   sealed trait CheckerMsg
+
   case class CheckUser(user: User) extends CheckerMsg
 
   sealed trait CheckerResponse
+
   case class BlackUser(user: User) extends CheckerMsg
+
   case class WhiteUser(user: User) extends CheckerMsg
+
 }
 
 object Storage {
+
   sealed trait StorageMsg
+
   case class AddUser(user: User) extends StorageMsg
+
 }
 
 class Storage extends Actor {
@@ -60,7 +70,9 @@ class Checker extends Actor {
 }
 
 class Recorder(checker: ActorRef, storage: ActorRef) extends Actor {
+
   import scala.concurrent.ExecutionContext.Implicits.global
+
   implicit val timeout = Timeout(5, TimeUnit.SECONDS)
 
   override def receive: Receive = {
