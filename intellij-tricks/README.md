@@ -35,3 +35,19 @@
 
 #### Navigate to Action
     - navigate to the desired action: `command + shift + a`
+
+#### Search Everywhere: `shift + shift`
+
+#### Tabs
+    - navigate to recent files: `command + e`
+    - navigate to recent edited files: `shift + command + e`
+
+## Code Selection
+    - extend selection: `command + w`
+    - shrink selections: `shift + command + w`
+
+## Code Completion
+#### Smart Code Completion: `alt + Enter`
+    - after the new keyword in an object declaration
+    - in the list of parameters of a method call
+    - in return statements
