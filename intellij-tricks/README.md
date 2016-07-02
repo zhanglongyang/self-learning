@@ -51,3 +51,8 @@
     - after the new keyword in an object declaration
     - in the list of parameters of a method call
     - in return statements
+#### Postfix Completion
+    - display postfix completion suggestion list: `command + j`
+    - check expression to be null: `null`
+    - check expression not to be null: `nn/notnull`
+    - insert try-catch block: `try`
