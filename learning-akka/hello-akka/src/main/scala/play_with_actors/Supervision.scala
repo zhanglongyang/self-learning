@@ -1,100 +1,89 @@
 package play_with_actors
 
-import java.util.concurrent.TimeUnit
-
-import akka.actor.{Actor, ActorRef, ActorSystem, Props}
-import akka.pattern.ask
-import akka.util.Timeout
-import play_with_actors.Checker.{BlackUser, CheckUser, WhiteUser}
-import play_with_actors.Recorder.NewUser
-import play_with_actors.Storage.AddUser
+import scala.concurrent.duration._
+import akka.actor.SupervisorStrategy.{Escalate, Restart, Resume, Stop}
+import akka.actor.{Actor, ActorRef, ActorSystem, OneForOneStrategy, Props, SupervisorStrategy}
+import play_with_actors.Aphrodite._
 
 import scala.language.postfixOps
 
-case class User(name: String, email: String)
+class Aphrodite extends Actor {
+  @scala.throws[Exception](classOf[Exception])
+  override def preStart(): Unit = {
+    println("Aphrodite preStart hook ...")
+  }
 
-object Recorder {
+  @scala.throws[Exception](classOf[Exception])
+  override def preRestart(reason: Throwable, message: Option[Any]): Unit = {
+    println("Aphrodite preRestart hook ...")
+    super.preRestart(reason, message)
+  }
 
-  sealed trait RecorderMsg
 
-  case class NewUser(user: User) extends RecorderMsg
+  @scala.throws[Exception](classOf[Exception])
+  override def postRestart(reason: Throwable): Unit = {
+    println("Aphrodite postRestart hook ...")
+    super.postRestart(reason)
+  }
 
-}
-
-object Checker {
-
-  sealed trait CheckerMsg
-
-  case class CheckUser(user: User) extends CheckerMsg
-
-  sealed trait CheckerResponse
-
-  case class BlackUser(user: User) extends CheckerMsg
-
-  case class WhiteUser(user: User) extends CheckerMsg
-
-}
-
-object Storage {
-
-  sealed trait StorageMsg
-
-  case class AddUser(user: User) extends StorageMsg
-
-}
-
-class Storage extends Actor {
-  var users = List.empty[User]
+  @scala.throws[Exception](classOf[Exception])
+  override def postStop(): Unit = {
+    println("Aphrodite postStop hook ...")
+  }
 
   override def receive: Receive = {
-    case AddUser(user) => {
-      println(s"Storage: $user added")
-      users = user :: users
-    }
+    case "Resume" => throw ResumeException
+    case "Stop" => throw StopException
+    case "Restart" => throw RestartException
+    case _ => throw new Exception
   }
 }
 
-class Checker extends Actor {
-  val blackList = List(
-    User("Adam", "adam@mail.com")
-  )
+object Aphrodite {
+  case object ResumeException extends Exception
+  case object StopException extends Exception
+  case object RestartException extends Exception
+}
 
-  override def receive: Receive = {
-    case CheckUser(user) if blackList.contains(user) =>
-      println(s"Checker: $user in blacklist")
-      sender() ! BlackUser(user)
-    case CheckUser(user) =>
-      println(s"Checker: $user not in blacklist")
-      sender() ! WhiteUser(user)
+class Hera extends Actor {
+  var childRef: ActorRef = _
+
+  override def supervisorStrategy: SupervisorStrategy = OneForOneStrategy(maxNrOfRetries = 10, withinTimeRange = 1 second) {
+    case ResumeException => Resume
+    case RestartException => Restart
+    case StopException => Stop
+    case _: Exception => Escalate
+  }
+
+  @scala.throws[Exception](classOf[Exception])
+  override def preStart(): Unit = {
+    childRef = context.actorOf(Props[Aphrodite], "Aphrodite")
+    Thread.sleep(100)
+  }
+
+  override def receive = {
+    case msg =>
+      println(s"Hera received $msg")
+      childRef ! msg
+      Thread.sleep(100)
   }
 }
 
-class Recorder(checker: ActorRef, storage: ActorRef) extends Actor {
+object Supervision extends App {
+  val system = ActorSystem("Supervision")
+  val hera = system.actorOf(Props[Hera], "hera")
 
-  import scala.concurrent.ExecutionContext.Implicits.global
+//  hera ! "Resume"
+//  Thread.sleep(1000)
+//  println()
 
-  implicit val timeout = Timeout(5, TimeUnit.SECONDS)
+  hera ! "Restart"
+  Thread.sleep(1000)
+  println()
 
-  override def receive: Receive = {
-    case NewUser(user) =>
-      checker ? CheckUser(user) map {
-        case WhiteUser(user) =>
-          storage ! AddUser(user)
-        case BlackUser(user) =>
-          println(s"Recorder: $user in blacklist")
-      }
-  }
-}
-
-object TalkToActor extends App {
-  val system = ActorSystem("talk-to-actor")
-  val checker = system.actorOf(Props[Checker], "checker")
-  val storage = system.actorOf(Props[Storage], "storage")
-  val recorder = system.actorOf(Props(new Recorder(checker, storage)), "recorder")
-
-  recorder ! Recorder.NewUser(User("Jon", "jon@mail.com"))
-
-  Thread.sleep(100)
+//  hera ! "Stop"
+//  Thread.sleep(1000)
+//  println()
 
   system.terminate()
 }

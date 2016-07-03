@@ -51,6 +51,7 @@
 - after the new keyword in an object declaration
 - in the list of parameters of a method call
 - in return statements
+
 #### Postfix Completion
 - display postfix completion suggestion list: `command + j`
 - check expression to be null: `null`
@@ -64,9 +65,11 @@
 ## Code Style
 #### code reformat
 - reformat current selection or current file: `alt + command + l`
+
 #### code optimize
 - optimize import statements: `alt + command + o`
 - enable **Optimize imports on the fly** to automatically optimize imports after each change
+
 #### navigate to compilation error
 - build the application: `command + F9`
 - navigate to next compilation error: `alt + command + down`
