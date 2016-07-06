@@ -1,6 +1,7 @@
 package routing
 
 import akka.actor.{ActorSystem, Props}
+import akka.routing.FromConfig
 import routing.Worker.Work
 
 object RouterApp extends App {
@@ -36,6 +37,23 @@ object RouterGroupApp extends App {
   val routerGroup = system.actorOf(Props(classOf[RouterGroup], workers))
   routerGroup ! Work()
   routerGroup ! Work()
+
+  Thread.sleep(100)
+
+  system.terminate()
+}
+
+
+object RandomRouter extends App {
+  val system = ActorSystem("random-router")
+
+  val routerPool = system.actorOf(FromConfig.props(Props[Worker]), "random-router-pool")
+
+  routerPool ! Work()
+  routerPool ! Work()
+  routerPool ! Work()
+  routerPool ! Work()
+  routerPool ! Work()
 
   Thread.sleep(100)
 
