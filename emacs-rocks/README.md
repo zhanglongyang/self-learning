@@ -17,3 +17,11 @@
 - `ctrl - del`: delete word in the left
 - `shift - ctrl - del`: delete whole line
 - `ctrl - 9`: digit-argument (execute the following command 9 times)
+
+## [Episode 03: A vimgolf albatross](http://emacsrocks.com/e03.html)
+- `ctrl - c ctrl - t`: transpose-lines (switch the current and previous lines, leaving point after both)
+- `ctrl - t`: transpose-characters (swith the characters around point, moving forward one character)
+
+## [Episode 04: A rebind controversy](http://emacsrocks.com/e04.html)
+- `meta - l`: downcase-word
+- `meta - t`: transpose-words
