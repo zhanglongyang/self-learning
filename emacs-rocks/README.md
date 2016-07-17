@@ -25,3 +25,11 @@
 ## [Episode 04: A rebind controversy](http://emacsrocks.com/e04.html)
 - `meta - l`: downcase-word
 - `meta - t`: transpose-words
+
+## [Episode 05: Macro in style](http://emacsrocks.com/e05.html)
+
+## [Episode 06: Yeah! Snippets!](http://emacsrocks.com/e06.html)
+- `tab`: yas/expand (If the preceeding text matches a yasnippet, expand it.)
+
+## [Episode 07: Mind exploded](http://emacsrocks.com/e07.html)
+- `key-chord-define-global`: Define a two-char key chord to invoke a command
