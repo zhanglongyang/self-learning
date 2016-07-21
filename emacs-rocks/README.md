@@ -33,3 +33,6 @@
 
 ## [Episode 07: Mind exploded](http://emacsrocks.com/e07.html)
 - `key-chord-define-global`: Define a two-char key chord to invoke a command
+
+## [Episode 08: Mark Multiple](http://emacsrocks.com/e08.html)
+- `ctrl - >`: mark-next-like-this

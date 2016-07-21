@@ -14,7 +14,7 @@
 
 #### Commenting and block commenting code
 - comment or uncomment current selection: `command + /`
-- block comment or uncomment current selection: `control + shift + /`
+- block comment or uncomment current selection: `ctrl + shift + /`
 
 #### Folding and expanding code
 - fold current code block: `command + '-'`
@@ -45,6 +45,9 @@
 ## Code Selection
 - extend selection: `command + w`
 - shrink selections: `shift + command + w`
+- select the next occurrence: `ctrl + g`
+- unselect the next occurrence: `shift + ctrl + g`
+- multi-cursor: `alt + left mouse`
 
 ## Code Completion
 #### Smart Code Completion: `alt + Enter`
@@ -59,8 +62,8 @@
 - insert try-catch block: `try`
 
 ## Code Generation
-- display generate menu in class file: `control + n`
-- display generate menu in test class: `control + n`
+- display generate menu in class file: `ctrl + n`
+- display generate menu in test class: `ctrl + n`
 
 ## Code Style
 #### code reformat
