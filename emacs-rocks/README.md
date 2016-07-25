@@ -36,3 +36,11 @@
 
 ## [Episode 08: Mark Multiple](http://emacsrocks.com/e08.html)
 - `ctrl - >`: mark-next-like-this
+
+## [Episode 09: expand-region](http://emacsrocks.com/e09.html)
+- `ctrl - @`: expand region
+
+## [Episode 10: jumping around](http://emacsrocks.com/e10.html)
+- ace-jump-mode (jump to a word starting with a given char)
+
+## [Episode 11: swank-js](http://emacsrocks.com/e11.html)
