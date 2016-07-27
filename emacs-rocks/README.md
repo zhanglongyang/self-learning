@@ -44,3 +44,11 @@
 - ace-jump-mode (jump to a word starting with a given char)
 
 ## [Episode 11: swank-js](http://emacsrocks.com/e11.html)
+
+## [Episode 12: Working with HTML](http://emacsrocks.com/e12.html)
+
+## [Episode 13: multiple-cursors](http://emacsrocks.com/e13.html)
+
+## [Episode 14: Paredit](http://emacsrocks.com/e14.html)
+
+## [Episode 15: restclient-mode](http://emacsrocks.com/e15.html)
