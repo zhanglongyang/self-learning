@@ -5,11 +5,16 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
     <bean id="person" class="com.zhanglongyang.Person"
-        init-method="onCreate" destroy-method="onDestroy">
+        init-method="onCreate" destroy-method="onDestroy" factory-method="getInstance">
         <constructor-arg name="name" value="Tom"></constructor-arg>
         <constructor-arg name="age" value="32"></constructor-arg>
         <property name="id">
             <value>100</value>
         </property>
+        <property name="address" ref="address"/>
+    </bean>
+    <bean id="address" class="com.zhanglongyang.Address">
+        <property name="name" value="Truck St"/>
+        <property name="postCode" value="3021"/>
     </bean>
 </beans>

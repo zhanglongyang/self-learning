@@ -5,9 +5,16 @@ public class Person {
     private Integer age;
     private String id;
 
+    private Address address;
+
     public Person(String name, Integer age) {
         this.name = name;
         this.age = age;
+    }
+
+    public static Person getInstance(String name, Integer age) {
+        System.out.println("Creating Person instance by Factory method");
+        return new Person(name, age);
     }
 
     public void onCreate() {
@@ -24,7 +31,16 @@ public class Person {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", id='" + id + '\'' +
+                ", address='" + address + '\'' +
                 '}';
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getName() {
