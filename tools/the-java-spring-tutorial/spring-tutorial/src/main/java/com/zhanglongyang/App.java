@@ -12,6 +12,8 @@ public class App {
 
         Person person = (Person) context.getBean("person");
         System.out.println(person.getAge());
+        System.out.println(person.getAddress());
+        System.out.println(person.getBasket());
 
         ((ClassPathXmlApplicationContext) context).close();
     }

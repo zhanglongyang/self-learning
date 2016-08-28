@@ -12,9 +12,21 @@
             <value>100</value>
         </property>
         <property name="address" ref="address"/>
+        <property name="basket" ref="basket"/>
     </bean>
+
     <bean id="address" class="com.zhanglongyang.Address">
         <property name="name" value="Truck St"/>
         <property name="postCode" value="3021"/>
+    </bean>
+
+    <bean id="basket" class="com.zhanglongyang.FruitBasket">
+        <constructor-arg name="name" value="Basket1"/>
+        <constructor-arg name="fruits">
+            <list>
+                <value>Apple</value>
+                <value>Banana</value>
+            </list>
+        </constructor-arg>
     </bean>
 </beans>

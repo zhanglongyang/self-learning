@@ -6,6 +6,7 @@ public class Person {
     private String id;
 
     private Address address;
+    private FruitBasket basket;
 
     public Person(String name, Integer age) {
         this.name = name;
@@ -32,6 +33,7 @@ public class Person {
                 ", age=" + age +
                 ", id='" + id + '\'' +
                 ", address='" + address + '\'' +
+                ", basket='" + basket + '\'' +
                 '}';
     }
 
@@ -41,6 +43,14 @@ public class Person {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public FruitBasket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(FruitBasket basket) {
+        this.basket = basket;
     }
 
     public String getName() {
