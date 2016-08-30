@@ -1,0 +1,68 @@
+-- Haskell Playground 1.0
+doubleMe 3
+
+doubleUs 3 4
+
+doubleUs2 3 4
+
+doubleSmallNumber 10
+doubleSmallNumber 1000
+
+conanO'Brien
+
+[1, 2, 3, 4] ++ [2, 4, 5]
+
+"hello" ++ " " ++ "world"
+
+'A' : " good one"
+
+1 : [2, 3, 4]
+
+"Hello World" !! 4
+[1, 2, 3, 4, 5] !! 3
+
+[3, 2, 1] > [2, 1, 0]
+[3, 2, 1] > [2, 10, 3]
+[3, 4, 0] > [3, 4]
+[3, 4, 5] == [3, 4, 5]
+
+head [1, 2, 3, 4]
+tail [1, 2, 3, 4]
+last [1, 2, 3, 4]
+init [1, 2, 3, 4]
+
+length [1, 2, 3, 4]
+
+null [1, 2]
+null []
+
+reverse [1, 2, 3, 4]
+
+take 2 [1, 2, 3, 4]
+take 5 [1, 2]
+take 0 [1, 2, 3]
+
+drop 2 [1, 2, 3, 4]
+drop 5 [1, 2]
+drop 0 [1, 2, 3]
+
+minimum [1, 2, 3, 4]
+maximum [1, 2, 3, 4]
+sum [1, 2, 3, 4]
+product [1, 2, 3, 4]
+product [1, 2, 3, 4, 0]
+
+4 `elem` [1, 2, 3, 4]
+4 `elem` [ 5, 6]
+
+[1..20]
+[2,5..20]
+[20,19..1]
+['a'..'z']
+['K'..'Z']
+
+take 4 [13,26..]
+take 4 (cycle [1, 2, 3])
+take 12 (cycle "LOL")
+take 3 (repeat 4)
+replicate 3 4
