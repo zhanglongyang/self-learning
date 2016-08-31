@@ -66,3 +66,14 @@ take 4 (cycle [1, 2, 3])
 take 12 (cycle "LOL")
 take 3 (repeat 4)
 replicate 3 4
+
+-- list comprehensions
+[x*2 | x <- [1..10]]
+[x*2 | x <- [1..10], x*2 >= 12]
+[x | x <- [50..100], x `mod` 7 == 3]
+[x | x <- [10..20], x /= 13, x /= 15]
+boomBangs [1, 21, 3, 41, 5, 61, 7]
+
+[x*y | x <- [1, 2, 3], y <- [4, 5]]
+[x*y | x <- [1, 2, 3], y <- [4, 5], x*y > 10]
+removeNonUppercase "HeLLoWorld"
