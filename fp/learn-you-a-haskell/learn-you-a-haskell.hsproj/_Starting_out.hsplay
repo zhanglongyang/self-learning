@@ -77,3 +77,10 @@ boomBangs [1, 21, 3, 41, 5, 61, 7]
 [x*y | x <- [1, 2, 3], y <- [4, 5]]
 [x*y | x <- [1, 2, 3], y <- [4, 5], x*y > 10]
 removeNonUppercase "HeLLoWorld"
+
+[(1, 2), (8, 11), (3, 4)]
+fst (3, 5)
+snd (3, 5)
+zip [1..5] ["one", "two", "three", "four", "five"]
+zip [1..500] ["one", "two", "three", "four", "five"]
+rightTriangles 
