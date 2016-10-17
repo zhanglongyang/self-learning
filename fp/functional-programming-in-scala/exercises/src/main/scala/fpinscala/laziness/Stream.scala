@@ -34,9 +34,13 @@ trait Stream[+A] {
     case _ => this
   }
 
-  def takeWhile(p: A => Boolean): Stream[A] = sys.error("todo")
+  def takeWhile(p: A => Boolean): Stream[A] = this match {
+    case Cons(h, t) if p(h()) => cons(h(), t().takeWhile(p))
+    case Cons(h, t) => t().takeWhile(p)
+    case _ => Empty
+  }
 
-  def forAll(p: A => Boolean): Boolean = sys.error("todo")
+  def forAll(p: A => Boolean): Boolean = foldRight(true)((a, b) => p(a) && b)
 
   def headOption: Option[A] = sys.error("todo")
 
