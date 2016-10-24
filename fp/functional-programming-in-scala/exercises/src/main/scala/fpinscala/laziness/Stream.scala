@@ -74,9 +74,15 @@ object Stream {
 
   val ones: Stream[Int] = Stream.cons(1, ones)
 
-  def constant[A](a: A): Stream[A] = cons(a, constant(a));
+  def constant[A](a: A): Stream[A] = cons(a, constant(a))
 
-  def from(n: Int): Stream[Int] = sys.error("todo")
+  def from(n: Int): Stream[Int] = cons(n, from(n + 1))
+
+  val fibs: Stream[Int] = {
+    def f(f0: Int, f1: Int): Stream[Int] = cons(f0, f(f1, f0 + f1))
+
+    f(0, 1)
+  }
 
   def unfold[A, S](z: S)(f: S => Option[(A, S)]): Stream[A] = sys.error("todo")
 }
