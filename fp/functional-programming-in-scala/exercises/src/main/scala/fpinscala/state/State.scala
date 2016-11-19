@@ -40,6 +40,10 @@ object RNG {
     (i / (Int.MaxValue.toDouble + 1), r)
   }
 
+  def doubleWithMap: Rand[Double] = {
+    this.map(nonNegativeInt)(_ / (Int.MaxValue.toDouble + 1))
+  }
+
   def intDouble(rng: RNG): ((Int,Double), RNG) = {
     val (i, r1) = rng.nextInt
     val (d, r2) = double(r1)
@@ -56,7 +60,7 @@ object RNG {
     val (d1, r1) = double(rng)
     val (d2, r2) = double(r1)
     val (d3, r3) = double(r2)
-    (d1, d2, d3)
+    ((d1, d2, d3), r3)
   }
 
   def ints(count: Int)(rng: RNG): (List[Int], RNG) = {
@@ -69,11 +73,22 @@ object RNG {
     })
   }
 
-  def map2[A,B,C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] = ???
+  def map2[A,B,C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] = {
+    rng => {
+      val (a, rng2) = ra(rng)
+      val (b, rng3) = rb(rng2)
+      (f(a, b), rng3)
+    }
+  }
 
   def sequence[A](fs: List[Rand[A]]): Rand[List[A]] = ???
 
-  def flatMap[A,B](f: Rand[A])(g: A => Rand[B]): Rand[B] = ???
+  def flatMap[A,B](f: Rand[A])(g: A => Rand[B]): Rand[B] = {
+    rng => {
+      val (a, rng2) = f(rng)
+      g(a)(rng2)
+    }
+  }
 }
 
 case class State[S,+A](run: S => (A, S)) {
