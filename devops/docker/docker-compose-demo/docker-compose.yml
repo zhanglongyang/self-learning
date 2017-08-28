@@ -1,0 +1,6 @@
+version: '3'
+services:
+  demo:
+    image: alpine:3.5
+    volumes:
+      - ~/.npmrc:/app/.npmrc
