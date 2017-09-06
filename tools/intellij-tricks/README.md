@@ -11,6 +11,7 @@
 
 #### View parameter information
 - view suggested parameters of a method: `command + p`
+- view type info: `ctrl + shift + p`
 
 #### Commenting and block commenting code
 - comment or uncomment current selection: `command + /`
@@ -37,6 +38,8 @@
 - navigate to the desired action: `command + shift + a`
 
 #### Search Everywhere: `shift + shift`
+
+### Quick definition: `command + shift + i`
 
 #### Tabs
 - navigate to recent files: `command + e`
