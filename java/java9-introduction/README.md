@@ -37,3 +37,40 @@ module java.sql {
 ```bash
 jdeps -jdkinternals Main.class
 ```
+
+## Language and Library improvements
+
+1. Collection Factory methods
+    ```
+    List<Integer> ints = List.of(1, 2, 3)
+
+    Set<String> abc = Set.of("a", "b", "c")
+
+    Map<String, Integer> kvs = Map.of("k1", 1, "k2", 2)
+    ```
+2. Stream API
+    - Added methods
+    ```
+    Stream<T> takeWhile(Predicate<? super T> predicate)
+
+    Stream<T> dropWhile(Predicate<? super T> predicate)
+
+    static Stream<T> ofNullable(T t)
+
+    static Stream<T> iterate(T seed, Predicate<? super T> hasNext, UnaryOperator<T> next)
+    ```
+3. Additions to Optional
+    - added method
+    ```
+    void ifPresentOrElse(Consumer<T> action, Runnable emptyAction)
+
+    Optinal<T> or(Supplier<Optional<T>> supplier)
+
+    Stream<T> stream()
+    ```
+4. Try-with-resources
+    ```
+    try (FileInputStream fis = new FileInputStream("filder/file.name")) {
+        fis.read();
+    }
+    ```
