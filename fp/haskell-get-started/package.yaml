@@ -24,6 +24,10 @@ dependencies:
 
 library:
   source-dirs: src
+  dependencies:
+    - text
+    - filepath
+    - containers
 
 executables:
   haskell-get-started-exe:
