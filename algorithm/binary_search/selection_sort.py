@@ -9,8 +9,6 @@ def findSmallest(arr):
 
     return smallest_index
 
-print(findSmallest([1, 2, 3, 4]))
-
 
 def selectionSort(arr):
     new_arr = []
@@ -20,5 +18,6 @@ def selectionSort(arr):
         new_arr.append(arr.pop(smallest))
 
     return new_arr
+
 
 print(selectionSort([2, 5, 1, 4, 3]))
