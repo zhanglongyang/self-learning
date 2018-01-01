@@ -1,6 +1,9 @@
 module Lib
-    ( someFunc
-    ) where
+  (
+    toDigits
+  ) where
 
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+toDigits :: Integer -> [Integer]
+toDigits x
+  | x <= 0 = []
+  | otherwise = toDigits (x `div` 10) ++ [x `mod` 10]
