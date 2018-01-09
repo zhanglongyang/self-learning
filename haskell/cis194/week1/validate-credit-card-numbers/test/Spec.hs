@@ -5,7 +5,12 @@ import Lib
 main = defaultMain tests
 
 tests :: TestTree
-tests = testGroup "Unit Tests" [toDigitsTests, toDigitsRevTests]
+tests = testGroup "Unit Tests"
+  [
+    toDigitsTests,
+    toDigitsRevTests,
+    doubleEveryOtherTests
+  ]
 
 toDigitsTests = testGroup "toDigits Tests"
   [
@@ -38,4 +43,22 @@ toDigitsRevTests = testGroup "toDigitsRev Tests"
 
     testCase "1234 to reversed digists should be [4, 3, 2, 1]" $
     toDigitsRev 1234 @?= [4, 3, 2, 1]
+  ]
+
+doubleEveryOtherTests = testGroup "doubleEveryOther Tests"
+  [
+    testCase "double every other for [] should be []" $
+    doubleEveryOther [] @?= [],
+
+    testCase "double every other for [1] should be [1]" $
+    doubleEveryOther [1] @?= [1],
+
+    testCase "double every other for [1, 2] should be [2, 2]" $
+    doubleEveryOther [1, 2] @?= [2, 2],
+
+    testCase "double every other for [1, 2, 3] should be [1, 4, 3]" $
+    doubleEveryOther [1, 2, 3] @?= [1, 4, 3],
+
+    testCase "double every other for [8, 7, 6, 5] should be [16,7,12,5]" $
+    doubleEveryOther [8, 7, 6, 5] @?= [16, 7, 12, 5]
   ]

@@ -1,3 +1,6 @@
 .stack-work/
 validate-credit-card-numbers.cabal
 *~
+
+.idea/
+*.iml

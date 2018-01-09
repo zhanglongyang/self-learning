@@ -1,7 +1,8 @@
 module Lib
   (
     toDigits,
-    toDigitsRev
+    toDigitsRev,
+    doubleEveryOther
   ) where
 
 toDigits :: Integer -> [Integer]
@@ -11,3 +12,10 @@ toDigits x
 
 toDigitsRev :: Integer -> [Integer]
 toDigitsRev = reverse . toDigits
+
+doubleEveryOther :: [Integer] -> [Integer]
+doubleEveryOther [] = []
+doubleEveryOther (x:[]) = [x]
+doubleEveryOther (x:y:zs)
+  | (length (x:y:zs)) `mod` 2 == 0 = 2*x : y : doubleEveryOther zs
+  | otherwise = x : 2*y : doubleEveryOther zs
