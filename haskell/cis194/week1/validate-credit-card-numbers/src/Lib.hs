@@ -3,8 +3,12 @@ module Lib
     toDigits,
     toDigitsRev,
     sumDigits,
-    doubleEveryOther
+    doubleEveryOther,
+    validate
   ) where
+
+validate :: Integer -> Bool
+validate x = (sumDigits $ doubleEveryOther $ toDigits x) `mod` 10 == 0
 
 toDigits :: Integer -> [Integer]
 toDigits x

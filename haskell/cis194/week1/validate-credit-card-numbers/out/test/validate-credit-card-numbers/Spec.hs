@@ -10,7 +10,8 @@ tests = testGroup "Unit Tests"
     toDigitsTests,
     toDigitsRevTests,
     sumDigitsTests,
-    doubleEveryOtherTests
+    doubleEveryOtherTests,
+    validateTests
   ]
 
 toDigitsTests = testGroup "toDigits Tests"
@@ -80,4 +81,25 @@ doubleEveryOtherTests = testGroup "doubleEveryOther Tests"
 
     testCase "double every other for [8, 7, 6, 5] should be [16,7,12,5]" $
     doubleEveryOther [8, 7, 6, 5] @?= [16, 7, 12, 5]
+  ]
+
+validateTests = testGroup "validate Tests"
+  [
+    testCase "validate 0 should be True" $
+    validate 0 @?= True,
+
+    testCase "validate 1 should be False" $
+    validate 1 @?= False,
+
+    testCase "validate 10 should be False" $
+    validate 10 @?= False,
+
+    testCase "validate 110 should be False" $
+    validate 110 @?= False,
+
+    testCase "validate 4012888888881881 shuold be True" $
+    validate 4012888888881881 @?= True,
+
+    testCase "validate 4012888888881882 should be False" $
+    validate 4012888888881882 @?= False
   ]
