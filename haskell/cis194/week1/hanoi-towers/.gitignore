@@ -1,0 +1,6 @@
+.stack-work/
+hanoi-towers.cabal
+*~
+
+.idea/
+*.iml
