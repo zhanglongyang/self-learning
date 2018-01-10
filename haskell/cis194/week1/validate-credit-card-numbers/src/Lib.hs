@@ -2,6 +2,7 @@ module Lib
   (
     toDigits,
     toDigitsRev,
+    sumDigits,
     doubleEveryOther
   ) where
 
@@ -12,6 +13,10 @@ toDigits x
 
 toDigitsRev :: Integer -> [Integer]
 toDigitsRev = reverse . toDigits
+
+sumDigits :: [Integer] -> Integer
+sumDigits [] = 0
+sumDigits (x:xs)= sum (toDigits x) + sumDigits xs
 
 doubleEveryOther :: [Integer] -> [Integer]
 doubleEveryOther [] = []

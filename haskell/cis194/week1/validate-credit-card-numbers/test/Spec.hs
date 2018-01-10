@@ -9,6 +9,7 @@ tests = testGroup "Unit Tests"
   [
     toDigitsTests,
     toDigitsRevTests,
+    sumDigitsTests,
     doubleEveryOtherTests
   ]
 
@@ -43,6 +44,24 @@ toDigitsRevTests = testGroup "toDigitsRev Tests"
 
     testCase "1234 to reversed digists should be [4, 3, 2, 1]" $
     toDigitsRev 1234 @?= [4, 3, 2, 1]
+  ]
+
+sumDigitsTests = testGroup "sumDigits Tests"
+  [
+    testCase "sum [] should be 0" $
+    sumDigits [] @?= 0,
+
+    testCase "sum [1] should be 1" $
+    sumDigits [1] @?= 1,
+
+    testCase "sum [1, 2, 3] should be 6" $
+    sumDigits [1, 2, 3] @?= 6,
+
+    testCase "sum [11] should be 2" $
+    sumDigits [11] @?= 2,
+
+    testCase "sum [16, 7, 12, 5] should be 22" $
+    sumDigits [16, 7, 12, 5] @?= 22
   ]
 
 doubleEveryOtherTests = testGroup "doubleEveryOther Tests"
