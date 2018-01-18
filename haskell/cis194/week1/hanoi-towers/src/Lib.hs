@@ -6,4 +6,5 @@ type Peg = String
 type Move = (Peg, Peg)
 
 hanio :: Integer -> Peg -> Peg -> Peg -> [Move]
-hanio i a b c = [(a, c), (a, b), (c, b)]
+hanio 1 a b c = [(a, b)]
+hanio n a b c = hanio (n - 1) a c b ++ [(a, b)] ++ hanio (n - 1) c b a
