@@ -1,2 +1,17 @@
-main :: IO ()
-main = putStrLn "Test suite not yet implemented"
+import Test.Tasty
+import Test.Tasty.HUnit
+import Lib
+
+main = defaultMain test
+
+test :: TestTree
+test = testGroup "Unit Tests"
+  [
+    hanioTests
+  ]
+
+hanioTests = testGroup "hanio tests"
+  [
+    testCase "moves for abc pegs with 2 discs should be [(a, c), (a, b), (c, b)]" $
+    hanio 2 "a" "b" "c" @?= [("a","c"), ("a","b"), ("c","b")]
+  ]
