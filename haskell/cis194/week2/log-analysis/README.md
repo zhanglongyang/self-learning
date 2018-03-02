@@ -16,8 +16,10 @@ caring about sometime next summer, and 100 being epic, catastrophic failure. All
 followed by textual content that runs to the end of the line. Here is a snippet of the log file including an informational message followed
 by a level 2 error message:
 
-> I 147 mice in the air, I’m afraid, but you might catch a bat, and
-> E 2 148 #56k istereadeat lo d200ff] BOOTMEM
+```
+I 147 mice in the air, I’m afraid, but you might catch a bat, and
+E 2 148 #56k istereadeat lo d200ff] BOOTMEM
+```
 
 It’s all quite confusing; clearly we need a program to sort through this mess. We’ve come up with some data types to capture the structure
 of this log file format:
